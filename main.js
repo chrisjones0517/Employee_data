@@ -35,10 +35,10 @@ dbRef.on("value", function (snapshot) {
         var newRow = $("<tr>");
 
         // newRow.attr("class", "#some")
-        newRow.append($("<td>"+nameK+"<td>"));
-        newRow.append($("<td>"+rateK+"<td>"));
-        newRow.append($("<td>"+roleK+"<td>"));
-        newRow.append($("<td>"+startk+"<td>"));
+        newRow.append($("<td>"+nameK+"</td>"));
+        newRow.append($("<td>"+rateK+"</td>"));
+        newRow.append($("<td>"+roleK+"</td>"));
+        newRow.append($("<td>"+startk+"</td>"));
 
        
 
