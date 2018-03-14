@@ -1,3 +1,17 @@
+
+ // Initialize Firebase
+ var config = {
+   apiKey: "AIzaSyCVMltm4e8k7GFroxyIesRhL29_0alxi6U",
+   authDomain: "employee-data-manager-24945.firebaseapp.com",
+   databaseURL: "https://employee-data-manager-24945.firebaseio.com",
+   projectId: "employee-data-manager-24945",
+   storageBucket: "",
+   messagingSenderId: "520718572086"
+ };
+ firebase.initializeApp(config);
+
+var dbRef=firebase.database().ref();
+
 $("#submit").on("click", function(){
 
     event.preventDefault();
@@ -11,11 +25,21 @@ $("#submit").on("click", function(){
     }
 
     $("tbody").append(newRow);
-});
+
+    dbRef.push({
+        name: $("#input1").val(),
+        role: $("#input2").val(),
+        rate: $("#input3").val(),
+        startDate: $("#input4").val(),
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+
+    });
+
     //append to dom here
 
 
-});
+
 
 function monthsWorked(unix) {
     var curDate = new Date();
