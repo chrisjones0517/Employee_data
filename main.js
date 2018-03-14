@@ -15,15 +15,27 @@
 var dbRef=firebase.database().ref();
 
 dbRef.on("value", function(snapshot){
+    $("tbody").empty();
+    console.log(snapshot.val());
+
+    var data = snapshot.val();
+   var keys = Object.keys(data)
+   for (var i = 0; i < keys.length; i++) {
+       var k = keys[i]
+    
+    
+   var values = [data[k].name,data[k].rate,data[k].role,data[k].startDate];
+   
     var newRow = $("<tr>");
-    for(var i = 1; i<6; i++){
+    for(var i = 0; i<4; i++){
         var newItem = $("<td>");
 
-        newItem.text(``);
+        newItem.text(values[i]);
         newRow.append(newItem);
     }
 
     $("tbody").append(newRow);
+}
 });
 
 
@@ -33,15 +45,15 @@ $("#submit").on("click", function(){
 
     event.preventDefault();
 
-    var newRow = $("<tr>");
-    for (var i = 1; i < 6; i++) {
-        var newItem = $("<td>");
+    // var newRow = $("<tr>");
+    // for (var i = 1; i < 6; i++) {
+    //     var newItem = $("<td>");
 
-        newItem.text($.trim($("#input" + i).val()));
-        newRow.append(newItem);
-    }
+    //     newItem.text($.trim($("#input" + i).val()));
+    //     newRow.append(newItem);
+    // }
 
-    $("tbody").append(newRow);
+    // $("tbody").append(newRow);
 
     dbRef.push({
         name: $("#input1").val(),
