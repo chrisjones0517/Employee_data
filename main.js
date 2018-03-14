@@ -1,3 +1,4 @@
+$("#submit").on("click", function () {
 
  // Initialize Firebase
  var config = {
@@ -9,6 +10,7 @@
    messagingSenderId: "520718572086"
  };
  firebase.initializeApp(config);
+ 
 
 var dbRef=firebase.database().ref();
 
@@ -32,10 +34,10 @@ $("#submit").on("click", function(){
     event.preventDefault();
 
     var newRow = $("<tr>");
-    for(var i = 1; i<6; i++){
+    for (var i = 1; i < 6; i++) {
         var newItem = $("<td>");
 
-        newItem.text($.trim($("#input"+i).val()));
+        newItem.text($.trim($("#input" + i).val()));
         newRow.append(newItem);
     }
 
@@ -50,6 +52,7 @@ $("#submit").on("click", function(){
       });
 
     });
+    
 
     //append to dom here
 
@@ -58,13 +61,17 @@ $("#submit").on("click", function(){
 
 function monthsWorked(unix) {
     var curDate = new Date();
+    var curMonth = curDate.getMonth();
     var curYear = curDate.getFullYear();
-    var curMonth = curDate.getMonth();    
-    
+
     var date = new Date(unix * 1000);
     var month = date.getMonth();
     var year = date.getFullYear();
-    var totalMonths = ((curYear - year) * 12) + (curMonth - month);    
-    
+    var totalMonths = ((curYear - year) * 12) + (curMonth - month);
+
     return totalMonths;
+}
+
+function moneyPaid(unix, payRate) {    
+    return monthsWorked(unix) * payRate;
 }
