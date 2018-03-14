@@ -1,4 +1,4 @@
-$("#submit").on("click", function () {
+
 
  // Initialize Firebase
  var config = {
