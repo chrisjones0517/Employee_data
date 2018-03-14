@@ -12,6 +12,21 @@
 
 var dbRef=firebase.database().ref();
 
+dbRef.on("value", function(snapshot){
+    var newRow = $("<tr>");
+    for(var i = 1; i<6; i++){
+        var newItem = $("<td>");
+
+        newItem.text(``);
+        newRow.append(newItem);
+    }
+
+    $("tbody").append(newRow);
+});
+
+
+
+
 $("#submit").on("click", function(){
 
     event.preventDefault();
